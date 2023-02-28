@@ -15,6 +15,7 @@ def lambda_handler(event, context):
     # Define your ClickUp API key and list ID
     API_KEY = os.environ['CLICKUP_API_KEY']
     LIST_ID = os.environ['CLICKUP_TASK_LIST_ID']
+    CUSTOM_FIELD_ID = os.environ['CLICKUP_CUSTOM_FIELD_ID']
 
     # Define the URL for retrieving the tasks in the list
     TASKS_URL = f'https://api.clickup.com/api/v2/list/{LIST_ID}/task'
@@ -50,7 +51,7 @@ def lambda_handler(event, context):
             custom_fields = task['custom_fields']
             date_value = None
             for field in custom_fields:
-                if field['id'] == '8146748e-3a21-49f7-a712-7285e054c915':
+                if field['id'] == CLICKUP_CUSTOM_FIELD_ID:
                     date_value = field.get('value')
                     field_id = field['id']
                     break
