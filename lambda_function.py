@@ -51,7 +51,7 @@ def lambda_handler(event, context):
             custom_fields = task['custom_fields']
             date_value = None
             for field in custom_fields:
-                if field['id'] == CLICKUP_CUSTOM_DATE_FIELD_ID:
+                if field['id'] == CUSTOM_DATE_FIELD_ID:
                     date_value = field.get('value')
                     field_id = field['id']
                     break
